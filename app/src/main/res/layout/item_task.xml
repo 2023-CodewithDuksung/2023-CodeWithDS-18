@@ -23,18 +23,10 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/itemEmailView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="과제 기한: 2000-00-00 ~ 2000-00-00"
-                    android:layout_marginBottom="2dp"/>
-
-                <TextView
                     android:id="@+id/itemDateView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:visibility="gone"
                     android:text="등록날짜: 2023-00-00" />
 
             </RelativeLayout>
@@ -65,7 +57,7 @@
                 android:layout_marginTop="5dp">
 
                 <TextView
-                    android:id="@+id/itemMovieView"
+                    android:id="@+id/itemProfessorView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="교수명"
@@ -81,13 +73,20 @@
                     />
 
                 <TextView
-                    android:id="@+id/itemRateView"
+                    android:id="@+id/itemMajorView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="학과명" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/itemDeadlineView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="과제 기한: 2000-00-00 ~ 2000-00-00"
+                android:layout_marginBottom="2dp"/>
 
         </LinearLayout>
 

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.example.a2023hackathon.databinding.FragmentNotificationsBinding
+import com.google.firebase.firestore.Query
 
 class NotificationsFragment : Fragment() {
 

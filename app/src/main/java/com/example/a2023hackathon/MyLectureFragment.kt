@@ -6,7 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.a2023hackathon.MyApplication.Companion.db
 import com.example.a2023hackathon.databinding.FragmentMyLectureBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,7 +56,33 @@ class MyLectureFragment : Fragment() {
     ): View? {
         binding = FragmentMyLectureBinding.inflate(inflater, container, false)
 
+        binding.btnAddtask.setOnClickListener {
+            val intent = Intent(requireContext(), AddTaskActivity::class.java)
+            startActivity(intent)
+        }
+
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        MyApplication.db.collection("tasks")
+            .orderBy("date", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { result ->
+                val itemList = mutableListOf<ItemTaskModel>()
+                for(document in result){
+                    val item = document.toObject(ItemTaskModel::class.java)
+                    item.docId = document.id
+                    itemList.add(item)
+                }
+                binding.feedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                binding.feedRecyclerView.adapter = MyTaskAdapter(requireContext(), itemList)
+            }
+            .addOnFailureListener{
+                Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()
+            }
     }
 
     companion object {

@@ -28,4 +28,12 @@
         tools:listitem="@layout/item_lecture"
         tools:itemCount="3"/>
 
+    <Button
+        android:id="@+id/btn_addtask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="추가"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>
