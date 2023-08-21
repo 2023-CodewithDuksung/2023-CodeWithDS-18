@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.a2023hackathon.databinding.ActivityAddTaskBinding
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,14 +30,16 @@ class AddTaskActivity : AppCompatActivity() {
 
     fun saveStore() {
         val data = mapOf(
-            "title" to binding.addTasktitle,
-            "content" to binding.addTaskcontent,
+            "title" to binding.addTasktitle.text.toString(),
+            "content" to binding.addTaskcontent.text.toString(),
             "date" to dateToString(Date()),
-            "s_date" to binding.addSdate,
-            "d_date" to binding.addDdate,
-            "professor" to binding.addProfessor,
-            "major" to binding.addMajor
+            "s_date" to binding.addSdate.text.toString(),
+            "d_date" to binding.addDdate.text.toString(),
+            "professor" to binding.addProfessor.text.toString(),
+            "major" to binding.addMajor.text.toString()
         )
+
+//        var db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         MyApplication.db.collection("tasks")
             .add(data)

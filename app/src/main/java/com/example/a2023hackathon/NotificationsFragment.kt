@@ -1,5 +1,6 @@
 package com.example.a2023hackathon
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,20 @@ class NotificationsFragment : Fragment() {
             transaction.commit()
         }
 
+        if(MyApplication.checkAuth()){
+            binding.CertifyEmailView.text = "${MyApplication.email}"
+        }
+
+        binding.logoutButton.setOnClickListener {
+            logout()
+        }
+
         return binding.root
+    }
+
+    private fun logout() {
+        val intent = Intent(requireContext(), AuthActivity::class.java)
+        startActivity(intent)
     }
 
 }

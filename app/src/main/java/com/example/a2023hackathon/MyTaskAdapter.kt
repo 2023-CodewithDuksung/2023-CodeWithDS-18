@@ -30,23 +30,23 @@ class MyTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMode
             itemDateView.text = data.date
             itemMajorView.text = data.major
             itemProfessorView.text = data.professor
-            itemDeadlineView.text = data.s_date + data.d_date
+            itemDeadlineView.text = data.d_date
 
-            itemTitleView.setOnClickListener{
-                val bundle : Bundle = Bundle()
-                bundle.putString("title", data.title)
-                bundle.putString("content", data.content)
-                bundle.putString("date", data.date)
-                bundle.putString("major", data.major)
-                bundle.putString("professor", data.professor)
-                bundle.putString("s_date", data.s_date)
-                bundle.putString("d_date", data.d_date)
-
-                Intent(context, LectureDetailActivity::class.java).apply{
-                    putExtras(bundle)
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }.run { context.startActivity(this) }
-            }
+//            itemTitleView.setOnClickListener{
+//                val bundle : Bundle = Bundle()
+//                bundle.putString("title", data.title)
+//                bundle.putString("content", data.content)
+//                bundle.putString("date", data.date)
+//                bundle.putString("major", data.major)
+//                bundle.putString("professor", data.professor)
+//                bundle.putString("s_date", data.s_date)
+//                bundle.putString("d_date", data.d_date)
+//
+//                Intent(context, LectureDetailActivity::class.java).apply{
+//                    putExtras(bundle)
+//                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                }.run { context.startActivity(this) }
+//            }
         }
     }
 }

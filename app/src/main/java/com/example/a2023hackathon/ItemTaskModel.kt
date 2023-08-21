@@ -8,6 +8,6 @@ data class ItemTaskModel(
     var s_date: String? = null,
     var d_date: String? = null,
     var professor: String? = null,
-    var major: String? = null
+    var major: String? = null,
 )
 

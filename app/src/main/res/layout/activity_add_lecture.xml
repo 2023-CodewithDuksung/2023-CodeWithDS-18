@@ -4,18 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailTaskFragment">
+    tools:context=".AddTaskActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/feedRecyclerView"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_task"
-        tools:itemCount="3"/>
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/add_professor"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="교수명" />
+        <EditText
+            android:id="@+id/add_major"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="학과명" />
+        <EditText
+            android:id="@+id/add_lecturename"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="과목명"/>
+        <EditText
+            android:id="@+id/add_term"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="학기"/>
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/add_task"
+        android:id="@+id/add_lecture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:backgroundTint="#A4C2F8"

@@ -1,5 +1,6 @@
 package com.example.a2023hackathon
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,27 +23,35 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Home page"
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    updateIcons(item, R.drawable.ic_home_black_24dp)
-                    loadFragment(HomeFragment())
-                    supportActionBar?.title = "Home page"
+        if(MyApplication.checkAuth()){
+            bottomNavigationView = findViewById(R.id.bottomNavigationView)
+            bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.navigation_home -> {
+                        updateIcons(item, R.drawable.ic_home_black_24dp)
+                        loadFragment(HomeFragment())
+                        supportActionBar?.title = "Home page"
+                    }
+                    R.id.navigation_dashboard -> {
+                        updateIcons(item, R.drawable.ic_dashboard_black_24dp)
+                        loadFragment(DashboardFragment())
+                        supportActionBar?.title = "Todo List"
+                    }
+                    R.id.navigation_notifications -> {
+                        updateIcons(item, R.drawable.ic_notifications_black_24dp)
+                        loadFragment(NotificationsFragment())
+                        supportActionBar?.title = "My page"
+                    }
                 }
-                R.id.navigation_dashboard -> {
-                    updateIcons(item, R.drawable.ic_dashboard_black_24dp)
-                    loadFragment(DashboardFragment())
-                    supportActionBar?.title = "Todo List"
-                }
-                R.id.navigation_notifications -> {
-                    updateIcons(item, R.drawable.ic_notifications_black_24dp)
-                    loadFragment(NotificationsFragment())
-                    supportActionBar?.title = "My page"
-                }
+                true
             }
-            true
+            loadFragment(HomeFragment())
+            bottomNavigationView.selectedItemId = R.id.navigation_home
+        }else{
+            val intent = Intent(this, AuthActivity::class.java)
+            startActivity(intent)
         }
+
     }
 
     private fun updateIcons(selectedItem: MenuItem, selectedIconRes: Int){

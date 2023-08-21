@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.a2023hackathon.MyApplication.Companion.db
 import com.example.a2023hackathon.databinding.FragmentMyLectureBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -56,10 +55,16 @@ class MyLectureFragment : Fragment() {
     ): View? {
         binding = FragmentMyLectureBinding.inflate(inflater, container, false)
 
-        binding.btnAddtask.setOnClickListener {
-            val intent = Intent(requireContext(), AddTaskActivity::class.java)
+        binding.btnAddlecture.setOnClickListener {
+            val intent = Intent(requireContext(), AddLectureActivity::class.java)
             startActivity(intent)
         }
+
+        // 어댑터를 설정하고 리사이클러뷰에 연결
+        val itemList = mutableListOf<ItemLectureModel>()
+        val adapter = MyLectureAdapter(requireContext(), itemList)
+        binding.feedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.feedRecyclerView.adapter = adapter
 
         return binding.root
     }
@@ -67,18 +72,18 @@ class MyLectureFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        MyApplication.db.collection("tasks")
-            .orderBy("date", Query.Direction.DESCENDING)
+        MyApplication.db.collection("lectures")
+            .orderBy("term", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                val itemList = mutableListOf<ItemTaskModel>()
+                val itemList = mutableListOf<ItemLectureModel>()
                 for(document in result){
-                    val item = document.toObject(ItemTaskModel::class.java)
+                    val item = document.toObject(ItemLectureModel::class.java)
                     item.docId = document.id
                     itemList.add(item)
                 }
                 binding.feedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                binding.feedRecyclerView.adapter = MyTaskAdapter(requireContext(), itemList)
+                binding.feedRecyclerView.adapter = MyLectureAdapter(requireContext(), itemList)
             }
             .addOnFailureListener{
                 Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()
