@@ -1,0 +1,30 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    >
+
+    <TextView
+        android:id="@+id/todo_major_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="과목명"
+        android:textSize="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:id="@+id/todo_task_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="과제명"
+        android:textSize="30dp"
+        android:layout_toRightOf="@id/todo_major_title"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
