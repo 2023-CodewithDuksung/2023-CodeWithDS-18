@@ -49,7 +49,6 @@
                 android:text="과제명"
                 android:textSize="16dp"
                 android:textStyle="bold" />
-
             <TextView
                 android:id="@+id/itemCodeView"
                 android:layout_width="wrap_content"
@@ -122,8 +121,6 @@
                     android:layout_marginBottom="2dp"/>
 
             </LinearLayout>
-
-
         </LinearLayout>
 
         <LinearLayout

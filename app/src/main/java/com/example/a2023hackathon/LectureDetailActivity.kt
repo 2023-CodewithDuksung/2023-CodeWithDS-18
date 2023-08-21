@@ -1,5 +1,4 @@
 package com.example.a2023hackathon
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +13,6 @@ class LectureDetailActivity : AppCompatActivity() {
 
     private lateinit var fragment1: DetailTaskFragment
     private lateinit var fragment2: DetailCommunityFragment
-
     private lateinit var name: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,13 +47,11 @@ class LectureDetailActivity : AppCompatActivity() {
         bundle.putString("sub_code", subCode)
 
         fragment1.arguments = bundle
-
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment1).commit()
 
         val tabs: TabLayout = binding.tabs
         tabs.addTab(tabs.newTab().setText("과제"))
-        tabs.addTab(tabs.newTab().setText("채팅"))
-
+        tabs.addTab(tabs.newTab().setText("소통"))
         tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val position = tab!!.position
@@ -65,6 +61,7 @@ class LectureDetailActivity : AppCompatActivity() {
                 }
                 supportFragmentManager.beginTransaction().replace(R.id.container, selected).commit()
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab) {
                 // 구현 필요 없음
             }
@@ -73,20 +70,5 @@ class LectureDetailActivity : AppCompatActivity() {
                 // 구현 필요 없음
             }
         })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_back, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> { //뒤로 가기 버튼
-                onBackPressed() // 기본 뒤로가기 동작 수행
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 }

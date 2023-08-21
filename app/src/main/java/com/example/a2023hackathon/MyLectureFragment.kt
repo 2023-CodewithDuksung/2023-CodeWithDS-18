@@ -31,7 +31,6 @@ class MyLectureFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var binding: FragmentMyLectureBinding
-    lateinit var btn: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +38,18 @@ class MyLectureFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+//        var toolbar = binding.toolbarBack
+//        toolbar.inflateMenu(R.menu.menu_back)
+//
+//        toolbar.setOnMenuItemClickListener{
+//            when(it.itemId){
+//                R.id.back ->{
+//                    startActivity(Intent(context, NotificationsFragment::class.java))
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
     }
 
     override fun onCreateView(
@@ -46,7 +57,6 @@ class MyLectureFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMyLectureBinding.inflate(inflater, container, false)
-
         binding.chatListToolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }

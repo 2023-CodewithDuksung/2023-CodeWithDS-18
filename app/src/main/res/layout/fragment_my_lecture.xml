@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MyLectureFragment">
 
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/chatList_toolbar"
         android:background="?android:attr/colorPrimary"

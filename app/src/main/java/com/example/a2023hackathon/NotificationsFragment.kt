@@ -38,6 +38,17 @@ class NotificationsFragment : Fragment() {
             logout()
         }
 
+        binding.btnMove.setOnClickListener{
+            var bundle : Bundle = Bundle()
+            bundle.putString("fromFrag", "수강과목프래그먼트")
+            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            val mylecturefragment: Fragment = MyLectureFragment()
+            mylecturefragment.arguments = bundle
+            transaction.replace(R.id.main_layout, mylecturefragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         return binding.root
     }
 
