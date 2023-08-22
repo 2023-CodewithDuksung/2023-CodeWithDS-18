@@ -51,6 +51,7 @@ class MyLectureFragment : Fragment() {
 
         val toolbar = binding.chatListToolbar
 //        val navController = findNavController(binding)
+
         val activity = requireActivity() as AppCompatActivity
         activity.setSupportActionBar(binding.chatListToolbar)
 
