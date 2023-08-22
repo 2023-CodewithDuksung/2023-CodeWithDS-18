@@ -2,14 +2,15 @@ package com.example.a2023hackathon
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2023hackathon.databinding.FragmentMyLectureBinding
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
 // TODO: Rename parameter arguments, choose names that match
@@ -34,19 +35,6 @@ class MyLectureFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-//        var toolbar = binding.toolbarBack
-//        toolbar.inflateMenu(R.menu.menu_back)
-//
-//        toolbar.setOnMenuItemClickListener{
-//            when(it.itemId){
-//                R.id.back ->{
-//                    startActivity(Intent(context, NotificationsFragment::class.java))
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-
     }
 
     override fun onCreateView(
@@ -60,6 +48,13 @@ class MyLectureFragment : Fragment() {
             startActivity(intent)
         }
 
+
+        val toolbar = binding.chatListToolbar
+//        val navController = findNavController(binding)
+        val activity = requireActivity() as AppCompatActivity
+        activity.setSupportActionBar(binding.chatListToolbar)
+
+
         // 어댑터를 설정하고 리사이클러뷰에 연결
         val itemList = mutableListOf<ItemLectureModel>()
         val adapter = MyLectureAdapter(requireContext(), itemList)
@@ -69,6 +64,17 @@ class MyLectureFragment : Fragment() {
         return binding.root
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                requireActivity().onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
     override fun onStart() {
         super.onStart()
 
@@ -77,6 +83,7 @@ class MyLectureFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 val itemList = mutableListOf<ItemLectureModel>()
+                val taskList = mutableListOf<ItemTaskModel>()
                 for(document in result){
                     val item = document.toObject(ItemLectureModel::class.java)
                     item.docId = document.id

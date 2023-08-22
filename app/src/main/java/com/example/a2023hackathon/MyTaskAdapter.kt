@@ -28,9 +28,16 @@ class MyTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMode
             itemTitleView.text = data.title
             itemContentView.text = data.content
             itemDateView.text = data.date
+            itemDeadlineView.text = data.d_date
             itemMajorView.text = data.major
             itemProfessorView.text = data.professor
-            itemDeadlineView.text = data.d_date
+            itemCodeView.text = data.sub_code
+//            itemMajorView.text = intent.getStringExtra("major")
+//            itemProfessorView.text = intent.getStringExtra("professor")
+//            itemCodeView.text = intent.getStringExtra("sub_code")
+        }
+    }
+}
 
 //            itemTitleView.setOnClickListener{
 //                val bundle : Bundle = Bundle()
@@ -47,6 +54,3 @@ class MyTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMode
 //                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 //                }.run { context.startActivity(this) }
 //            }
-        }
-    }
-}

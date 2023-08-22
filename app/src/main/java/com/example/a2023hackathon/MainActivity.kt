@@ -16,6 +16,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
     lateinit var binding: ActivityMainBinding
 
+    companion object{
+        const val DOC_ID = "extra_doc_id"
+        const val SUB_CODE = "extra_sub_code"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)

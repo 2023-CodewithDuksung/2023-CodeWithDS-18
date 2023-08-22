@@ -6,5 +6,6 @@ data class ItemLectureModel(
     var term: String? = null,
     var professor: String? = null,
     var major: String? = null,
+    var sub_code: String? = null,
 )
 

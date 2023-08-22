@@ -21,11 +21,11 @@
         tools:targetApi="31">
         <activity
             android:name=".AddLectureActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".AuthActivity"
-            android:exported="false"
-            android:theme="@style/LoginTheme" />
+            android:exported="false" />
         <activity
             android:name=".AddTaskActivity"
             android:exported="false"

@@ -2,12 +2,14 @@ package com.example.a2023hackathon
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.a2023hackathon.MainActivity.Companion.SUB_CODE
 import com.example.a2023hackathon.databinding.FragmentDetailTaskBinding
 import com.google.firebase.firestore.Query
 
@@ -26,6 +28,8 @@ class DetailTaskFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var binding: FragmentDetailTaskBinding
+    private var docid: String? = null
+    private  var subCode: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +46,10 @@ class DetailTaskFragment : Fragment() {
         binding = FragmentDetailTaskBinding.inflate(inflater, container, false)
 
         binding.addTask.setOnClickListener {
-            val intent = Intent(requireContext(), AddTaskActivity::class.java)
-            startActivity(intent)
+            if(MyApplication.checkAuth()){
+                val intent = Intent(requireContext(), AddTaskActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         // 어댑터를 설정하고 리사이클러뷰에 연결
@@ -65,8 +71,10 @@ class DetailTaskFragment : Fragment() {
                 val itemList = mutableListOf<ItemTaskModel>()
                 for(document in result){
                     val item = document.toObject(ItemTaskModel::class.java)
-                    item.docId = document.id
-                    itemList.add(item)
+                    if(subCode.equals(item.sub_code)){
+                        item.docId = document.id
+                        itemList.add(item)
+                    }
                 }
                 binding.feedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
                 binding.feedRecyclerView.adapter = MyTaskAdapter(requireContext(), itemList)

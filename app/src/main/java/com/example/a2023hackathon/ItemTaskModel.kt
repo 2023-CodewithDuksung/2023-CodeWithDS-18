@@ -9,5 +9,7 @@ data class ItemTaskModel(
     var d_date: String? = null,
     var professor: String? = null,
     var major: String? = null,
+    var sub_code: String? = null,
+    var state: String? = "In progress",
 )
 
