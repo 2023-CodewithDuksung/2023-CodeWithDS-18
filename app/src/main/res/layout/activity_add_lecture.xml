@@ -68,7 +68,6 @@
 
     </LinearLayout>
 
-
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/add_lecture"
         android:layout_width="wrap_content"
