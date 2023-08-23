@@ -12,4 +12,3 @@ data class ItemTaskModel(
     var sub_code: String? = null,
     var state: String? = "In progress",
 )
-

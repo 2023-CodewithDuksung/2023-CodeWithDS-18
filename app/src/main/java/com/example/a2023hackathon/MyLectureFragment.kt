@@ -28,6 +28,7 @@ class MyLectureFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var binding: FragmentMyLectureBinding
+    lateinit var btn: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,18 +44,14 @@ class MyLectureFragment : Fragment() {
     ): View? {
         binding = FragmentMyLectureBinding.inflate(inflater, container, false)
 
+        binding.chatListToolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         binding.btnAddlecture.setOnClickListener {
             val intent = Intent(requireContext(), AddLectureActivity::class.java)
             startActivity(intent)
         }
-
-
-        val toolbar = binding.chatListToolbar
-//        val navController = findNavController(binding)
-
-        val activity = requireActivity() as AppCompatActivity
-        activity.setSupportActionBar(binding.chatListToolbar)
-
 
         // 어댑터를 설정하고 리사이클러뷰에 연결
         val itemList = mutableListOf<ItemLectureModel>()
@@ -65,17 +62,6 @@ class MyLectureFragment : Fragment() {
         return binding.root
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                requireActivity().onBackPressed()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-
     override fun onStart() {
         super.onStart()
 
@@ -84,7 +70,6 @@ class MyLectureFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 val itemList = mutableListOf<ItemLectureModel>()
-                val taskList = mutableListOf<ItemTaskModel>()
                 for(document in result){
                     val item = document.toObject(ItemLectureModel::class.java)
                     item.docId = document.id

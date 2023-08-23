@@ -7,5 +7,5 @@ data class ItemLectureModel(
     var professor: String? = null,
     var major: String? = null,
     var sub_code: String? = null,
+    var mytasks: List<ItemTaskModel>? = null
 )
-

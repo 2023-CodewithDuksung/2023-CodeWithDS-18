@@ -61,7 +61,7 @@
                     android:id="@+id/add_term"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:hint="학기"/>
+                    android:hint="학기 : 2023-02"/>
             </LinearLayout>
 
         </ScrollView>

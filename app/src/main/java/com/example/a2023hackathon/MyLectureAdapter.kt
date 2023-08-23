@@ -37,6 +37,7 @@ class MyLectureAdapter(val context: Context, val itemList: MutableList<ItemLectu
 
             itemNameView.setOnClickListener{
                 val bundle : Bundle = Bundle()
+                bundle.putString("name", data.name)
                 bundle.putString("major", data.major)
                 bundle.putString("professor", data.professor)
                 bundle.putString("sub_code", data.sub_code)
@@ -47,6 +48,10 @@ class MyLectureAdapter(val context: Context, val itemList: MutableList<ItemLectu
                 }.run {
                     context.startActivity(this)
                 }
+            }
+
+            enroll.setOnClickListener {
+
             }
         }
     }

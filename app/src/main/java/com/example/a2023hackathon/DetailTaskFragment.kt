@@ -28,8 +28,9 @@ class DetailTaskFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var binding: FragmentDetailTaskBinding
-    private var docid: String? = null
-    private  var subCode: String? = null
+    lateinit var major: String
+    lateinit var professor: String
+    lateinit var subCode: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +46,16 @@ class DetailTaskFragment : Fragment() {
     ): View? {
         binding = FragmentDetailTaskBinding.inflate(inflater, container, false)
 
+        major = arguments?.getString("major").toString()
+        professor = arguments?.getString("professor").toString()
+        subCode = arguments?.getString("sub_code").toString()
+
         binding.addTask.setOnClickListener {
             if(MyApplication.checkAuth()){
                 val intent = Intent(requireContext(), AddTaskActivity::class.java)
+                intent.putExtra(AddTaskActivity.EXTRA_MAJOR, major)
+                intent.putExtra(AddTaskActivity.EXTRA_PROFESSOR, professor)
+                intent.putExtra(AddTaskActivity.EXTRA_SUB_CODE, subCode)
                 startActivity(intent)
             }
         }

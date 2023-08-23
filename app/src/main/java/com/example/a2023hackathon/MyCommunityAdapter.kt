@@ -1,7 +1,9 @@
 package com.example.a2023hackathon
 
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a2023hackathon.databinding.ItemCommunityMeBinding
@@ -23,7 +25,7 @@ class MyCommunityAdapter(private val itemList: MutableList<ItemCommunityModel>, 
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (itemList[position].name == myName) {
+        return if (itemList[position].user == myName) {
             0 // 로그인한 사용자의 이름과 일치하는 경우 (내 채팅)
         } else {
             1 // 로그인한 사용자의 이름과 다른 경우 (다른 사람 채팅)
@@ -41,13 +43,20 @@ class MyCommunityAdapter(private val itemList: MutableList<ItemCommunityModel>, 
             holder.binding.run {
                 communityMessage.text = data.text
                 messageTime.text = data.time
+
             }
         } else if (holder is OtherCommunityViewHolder) {
             holder.binding.run {
-                communityUser.text = data.name
+                communityUser.text = data.user
                 communityMessage.text = data.text
                 messageTime.text = data.time
             }
         }
+    }
+
+    fun setData(list: List<ItemCommunityModel>) {
+        itemList.clear()
+        itemList.addAll(list)
+        notifyDataSetChanged()
     }
 }

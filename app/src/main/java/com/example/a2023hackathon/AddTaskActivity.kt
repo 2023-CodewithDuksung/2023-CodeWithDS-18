@@ -14,6 +14,12 @@ import java.util.*
 class AddTaskActivity : AppCompatActivity() {
     lateinit var binding: ActivityAddTaskBinding
 
+    companion object {
+        const val EXTRA_MAJOR = "extra_major"
+        const val EXTRA_PROFESSOR = "extra_professor"
+        const val EXTRA_SUB_CODE = "extra_sub_code"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
@@ -42,11 +48,15 @@ class AddTaskActivity : AppCompatActivity() {
             "date" to dateToString(Date()),
             "s_date" to binding.addSdate.text.toString(),
             "d_date" to binding.addDdate.text.toString(),
-            "professor" to binding.addProfessor.text.toString(),
-            "major" to binding.addMajor.text.toString()
+            "professor" to intent.getStringExtra(EXTRA_PROFESSOR),
+            "major" to intent.getStringExtra(EXTRA_MAJOR),
+            "sub_code" to intent.getStringExtra(EXTRA_SUB_CODE),
+            "state" to binding.state.text.toString()
         )
 
-//        var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+//        "professor" to binding.addProfessor.text.toString(),
+//        "major" to binding.addMajor.text.toString(),
+//        "sub_code" to binding.subCode.text.toString(),
 
         MyApplication.db.collection("tasks")
             .add(data)
