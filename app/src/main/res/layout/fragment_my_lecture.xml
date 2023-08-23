@@ -6,10 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MyLectureFragment">
 
-    <Toolbar
-        android:id="@+id/toolbar_back"
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/chatList_toolbar"
+        android:background="?android:attr/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:menu="@menu/menu_mylecture"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="수강중인 과목"
+        app:titleCentered="true"/>
 
     <TextView
         android:id="@+id/textView"
@@ -25,8 +32,10 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/chatList_toolbar"
         tools:listitem="@layout/item_lecture"
         tools:itemCount="3"/>
+
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btn_addlecture"

@@ -1,6 +1,5 @@
 package com.example.a2023hackathon
 
-import TodoAdapter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,7 +22,7 @@ class DashboardFragment : Fragment() {
     ): View {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
-        return binding.root
+//        return binding.root
     }
 
 //    override fun onCreateView(
@@ -60,8 +59,8 @@ class DashboardFragment : Fragment() {
                         item.docId = document.id
                         itemList.add(item)
                     }
-                    binding.todoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    binding.todoRecyclerView.adapter = TodoTaskAdapter(requireContext(),itemList)
+//                    binding.todoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+//                    binding.todoRecyclerView.adapter = TodoTaskAdapter(requireContext(),itemList)
                     Log.d("2023Hackathon", "${itemList}")
                 }
                 .addOnFailureListener{

@@ -1,9 +1,6 @@
 package com.example.a2023hackathon
 
-import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
-import java.util.Locale
 
 data class ItemTaskModel(
     var docId: String? = null,
@@ -15,4 +12,6 @@ data class ItemTaskModel(
     var professor: String? = null,
     var major: String? = null,
     var sub_code: String? = null,
+    var state: String? = "In progress",
 )
+
