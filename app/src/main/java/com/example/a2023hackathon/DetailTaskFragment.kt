@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.a2023hackathon.MainActivity.Companion.SUB_CODE
 import com.example.a2023hackathon.databinding.FragmentDetailTaskBinding
 import com.google.firebase.firestore.Query
 
@@ -28,8 +26,9 @@ class DetailTaskFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var binding: FragmentDetailTaskBinding
-    private var docid: String? = null
-    private  var subCode: String? = null
+    lateinit var major: String
+    lateinit var professor: String
+    lateinit var subCode: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +44,16 @@ class DetailTaskFragment : Fragment() {
     ): View? {
         binding = FragmentDetailTaskBinding.inflate(inflater, container, false)
 
+        major = arguments?.getString("major").toString()
+        professor = arguments?.getString("professor").toString()
+        subCode = arguments?.getString("sub_code").toString()
+
         binding.addTask.setOnClickListener {
             if(MyApplication.checkAuth()){
                 val intent = Intent(requireContext(), AddTaskActivity::class.java)
+                intent.putExtra(AddTaskActivity.EXTRA_MAJOR, major)
+                intent.putExtra(AddTaskActivity.EXTRA_PROFESSOR, professor)
+                intent.putExtra(AddTaskActivity.EXTRA_SUB_CODE, subCode)
                 startActivity(intent)
             }
         }
@@ -63,6 +69,8 @@ class DetailTaskFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+
 
         MyApplication.db.collection("tasks")
             .orderBy("d_date", Query.Direction.ASCENDING)

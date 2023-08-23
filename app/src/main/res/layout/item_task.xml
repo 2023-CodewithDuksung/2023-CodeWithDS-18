@@ -62,6 +62,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp">
@@ -91,12 +92,37 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/itemDeadlineView"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="과제 기한: 2000-00-00 ~ 2000-00-00"
-                android:layout_marginBottom="2dp"/>
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/itemSdateView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8/22"
+                    android:layout_marginBottom="2dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="~"
+                    />
+
+                <TextView
+                    android:id="@+id/itemDeadlineView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8/24"
+                    android:layout_marginBottom="2dp"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -120,8 +146,7 @@
             android:id="@+id/itemContentView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:text="글 내용"
+            android:text="과제 내용"
             android:layout_marginTop="5dp"
             android:maxLines="1"
             android:ellipsize="end"/>

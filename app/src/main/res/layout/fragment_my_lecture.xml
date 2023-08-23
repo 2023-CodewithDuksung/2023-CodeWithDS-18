@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MyLectureFragment">
 
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/chatList_toolbar"
         android:background="?android:attr/colorPrimary"
@@ -34,6 +35,7 @@
         android:layout_below="@id/chatList_toolbar"
         tools:listitem="@layout/item_lecture"
         tools:itemCount="3"/>
+
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btn_addlecture"
