@@ -4,6 +4,7 @@ import java.util.Date
 
 data class ItemTaskModel(
     var docId: String? = null,
+    var name: String? = null,
     var title: String? = null,
     var content: String? = null,
     var date: String? = null,

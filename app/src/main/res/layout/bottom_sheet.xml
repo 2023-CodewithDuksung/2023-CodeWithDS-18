@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/bottom_sheet_menu"
+    android:padding="25dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textView"
+        android:layout_marginBottom="10dp"
+        android:text="학기를 선택하세요."/>
+
+    <Button
+        android:id="@+id/termAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="전체 보기"
+        android:backgroundTint="#2A6EE0"
+        android:textColor="@android:color/white"/>
+    <Button
+        android:id="@+id/term202301"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2023년도 1학기"
+        android:backgroundTint="#2A6EE0"
+        android:textColor="@android:color/white"/>
+    <Button
+        android:id="@+id/term202302"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2023년도 2학기"
+        android:backgroundTint="#2A6EE0"
+        android:textColor="@android:color/white"/>
+    <Button
+        android:id="@+id/term202401"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2024년도 1학기"
+        android:backgroundTint="#2A6EE0"
+        android:textColor="@android:color/white"/>
+    <Button
+        android:id="@+id/term202402"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2024년도 2학기"
+        android:backgroundTint="#2A6EE0"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>

@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar_back"
+        android:layout_margin="10dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/add_professor"
@@ -41,23 +42,39 @@
         <EditText
             android:id="@+id/add_tasktitle"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:hint="과제명"/>
-        <EditText
-            android:id="@+id/add_sdate"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:hint="시작일"/>
-        <EditText
-            android:id="@+id/add_ddate"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:hint="마감일"/>
         <EditText
             android:id="@+id/add_taskcontent"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:hint="과제 내용"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/add_ddate"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/calendar" />
+
+            <TextView
+                android:id="@+id/string_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="마감일"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="18dp" />
+
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,13 +92,14 @@
         android:id="@+id/add_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="#A4C2F8"
+        app:backgroundTint="#2A6EE0"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        app:icon="@android:drawable/ic_input_add" />
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@color/white"/>
 
 </RelativeLayout>

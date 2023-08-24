@@ -6,17 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".MyLectureFragment">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/chatList_toolbar"
+            android:background="?android:attr/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:titleCentered="true">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/chatList_toolbar"
-        android:background="?android:attr/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        app:menu="@menu/menu_mylecture"
-        app:navigationIcon="?attr/homeAsUpIndicator"
-        app:title="수강중인 과목"
-        app:titleCentered="true"/>
+            <TextView
+                android:id="@+id/semester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="강의 목록"
+                android:layout_gravity="center"
+                android:textSize="15dp"/>
+
+            <ImageView
+                android:id="@+id/deleteAll"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:clickable="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/trashcan"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:id="@+id/btn_bs"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="학기"
+                android:layout_gravity="right" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
 
     <TextView
         android:id="@+id/textView"
@@ -35,20 +61,5 @@
         android:layout_below="@id/chatList_toolbar"
         tools:listitem="@layout/item_lecture"
         tools:itemCount="3"/>
-
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btn_addlecture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:backgroundTint="#A4C2F8"
-        android:textSize="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        app:icon="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="#ffffff">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,6 +38,7 @@
                         android:id="@+id/itemTermView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:text="수강 학기: 23-01" />
 
                     <Button
@@ -38,7 +46,9 @@
                         android:layout_width="50dp"
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
+                        android:backgroundTint="#eeeeee"
                         android:textSize="8dp"
+                        android:textColor="@color/black"
                         android:text="담기"/>
 
                     <!--                <TextView-->
@@ -58,8 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_gravity="center_horizontal">
 
                 <TextView
                     android:id="@+id/itemNameView"
@@ -105,13 +114,13 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_gravity="center_vertical"
-        android:background="#40000000" />
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:background="#40000000" />-->
 
 </LinearLayout>

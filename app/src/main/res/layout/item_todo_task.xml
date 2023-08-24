@@ -1,0 +1,98 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="#ffffdd">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <CheckBox
+            android:id="@+id/todo_task_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"/>
+
+        <LinearLayout
+            android:id="@+id/todo_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/todo_task_checkbox"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/todo_major_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="과목명"
+                        android:textSize="13dp"/>
+
+                    <TextView
+                        android:id="@+id/todo_task_d_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="D-day"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/todo_task_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="과제명"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/itemCodeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="과목 코드"
+            android:visibility="gone"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/todo_task_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="진행 중"
+            android:visibility="gone"
+            android:textSize="16dp" />
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

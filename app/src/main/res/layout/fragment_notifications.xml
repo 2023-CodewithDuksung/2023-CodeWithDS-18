@@ -89,7 +89,7 @@
                             android:id="@+id/btn_move"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="수강중인 과목"
+                            android:text="강의 목록"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="5dp"
                             android:layout_marginLeft="10dp"

@@ -35,25 +35,25 @@ class MyApplication : MultiDexApplication() {
         db = FirebaseFirestore.getInstance()
         storage = Firebase.storage
 
-        if(true) {
-            var userInfo = UserModel()
 
-            userInfo.uid = auth.uid
-            userInfo.email = auth.currentUser?.email
+        var userInfo = UserModel()
 
-            db.collection("users").document(auth.uid.toString())
-                .get()
-                .addOnCompleteListener{ task ->
-                    if(task.isSuccessful){
-                        val document = task.result
-                        if (document.exists()){ Log.d("ToyProject", "이미 존재하는 계정입니다.") }
-                        else {
-                            db.collection("users").document(auth.uid.toString()).set(userInfo)
-                            Log.d("ToyProject", "계정을 user collection에 추가했습니다.")
-                        }
+        userInfo.uid = auth.uid
+        userInfo.email = auth.currentUser?.email
+
+        db.collection("users").document(auth.uid.toString())
+            .get()
+            .addOnCompleteListener{ task ->
+                if(task.isSuccessful){
+                    val document = task.result
+                    if (document.exists()){ Log.d("ToyProject", "이미 존재하는 계정입니다.") }
+                    else {
+                        db.collection("users").document(auth.uid.toString()).set(userInfo)
+                        Log.d("ToyProject", "계정을 user collection에 추가했습니다.")
                     }
                 }
-        }
+            }
+
     }
 
 }

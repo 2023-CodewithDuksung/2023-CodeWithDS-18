@@ -37,31 +37,80 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <EditText
-                    android:id="@+id/add_professor"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:hint="교수명" />
-                <EditText
-                    android:id="@+id/add_major"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/add_major"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#2A6EE0"
+                        android:textColorHint="@color/white"
+                        android:hint="학과" />
+
+                    <TextView
+                        android:id="@+id/major_string"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="컴퓨터공학과"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:hint="학과명" />
-                <EditText
-                    android:id="@+id/add_lecturename"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/add_term"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#2A6EE0"
+                        android:textColorHint="@color/white"
+                        android:hint="학기" />
+
+                    <TextView
+                        android:id="@+id/term_string"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="2023년도 1학기"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:hint="과목명"/>
-                <EditText
-                    android:id="@+id/add_subcode"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:hint="과목 코드"/>
-                <EditText
-                    android:id="@+id/add_term"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:hint="학기 : 2023-02"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="15dp">
+
+                    <EditText
+                        android:id="@+id/add_professor"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="교수명" />
+
+                    <EditText
+                        android:id="@+id/add_lecturename"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="과목명" />
+
+                    <EditText
+                        android:id="@+id/add_subcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="과목 코드" />
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
         </ScrollView>
@@ -73,13 +122,15 @@
         android:id="@+id/add_lecture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="#A4C2F8"
+        app:backgroundTint="#2A6EE0"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        app:icon="@android:drawable/ic_input_add" />
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@color/white"/>
+
 
 </RelativeLayout>

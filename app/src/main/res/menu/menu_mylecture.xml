@@ -2,5 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item
+        android:id="@+id/term202301"
+        android:title="2023년도 1학기"
+        />
+    <item
+        android:id="@+id/term202302"
+        android:title="2023년도 2학기"
+        />
+    <item
+        android:id="@+id/term202401"
+        android:title="2024년도 1학기"
+        />
+    <item
+        android:id="@+id/term202402"
+        android:title="2024년도 2학기"
+        />
+
 
 </menu>

@@ -33,17 +33,17 @@ class MainActivity : AppCompatActivity() {
             bottomNavigationView.setOnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.navigation_home -> {
-                        updateIcons(item, R.drawable.ic_home_black_24dp)
+                        updateIcons(item, R.drawable.calendar_1)
                         loadFragment(HomeFragment())
                         supportActionBar?.title = "Home page"
                     }
                     R.id.navigation_dashboard -> {
-                        updateIcons(item, R.drawable.ic_dashboard_black_24dp)
+                        updateIcons(item, R.drawable.checklist_1)
                         loadFragment(DashboardFragment())
                         supportActionBar?.title = "Todo List"
                     }
                     R.id.navigation_notifications -> {
-                        updateIcons(item, R.drawable.ic_notifications_black_24dp)
+                        updateIcons(item, R.drawable.user_1)
                         loadFragment(NotificationsFragment())
                         supportActionBar?.title = "My page"
                     }
@@ -66,9 +66,9 @@ class MainActivity : AppCompatActivity() {
             val item = menu.getItem(i)
             if (item != selectedItem) {
                 when (item.itemId) {
-                    R.id.navigation_home -> item.setIcon(R.drawable.ic_home_black_24dp)
-                    R.id.navigation_dashboard -> item.setIcon(R.drawable.ic_dashboard_black_24dp)
-                    R.id.navigation_notifications -> item.setIcon(R.drawable.ic_notifications_black_24dp)
+                    R.id.navigation_home -> item.setIcon(R.drawable.calendar)
+                    R.id.navigation_dashboard -> item.setIcon(R.drawable.checklist)
+                    R.id.navigation_notifications -> item.setIcon(R.drawable.user)
                 }
             }
         }
