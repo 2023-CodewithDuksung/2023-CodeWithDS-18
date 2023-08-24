@@ -45,23 +45,22 @@
             android:textStyle="bold"
             android:text="환영합니다."/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mytaskRecyclerView"
+        <TextView
+            android:id="@+id/psemester"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/calendarView"
-            android:layout_margin="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/greeting"
+            android:text="2023년 2학기"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/feedRecyclerView"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/mytaskRecyclerView"
+            android:layout_below="@id/psemester"
             tools:listitem="@layout/item_lecture"
             tools:itemCount="3"/>
 

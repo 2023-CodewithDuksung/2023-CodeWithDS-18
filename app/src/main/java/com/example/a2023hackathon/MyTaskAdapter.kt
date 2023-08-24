@@ -33,6 +33,7 @@ class MyTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMode
             itemDateView.text = data.date
             itemSdateView.text = data.s_date.toString()
             itemDeadlineView.text = data.d_date.toString()
+            itemTimeView.text = data.d_time.toString()
             itemMajorView.text = data.major
             itemProfessorView.text = data.professor
             itemCodeView.text = data.sub_code
@@ -54,10 +55,12 @@ class MyTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMode
                                 "content" to data.content,
                                 "s_date" to data.s_date,
                                 "d_date" to data.d_date,
+                                "d_time" to data.d_time,
                                 "name" to data.name,
                                 "major" to data.major,
                                 "professor" to data.professor,
                                 "sub_code" to data.sub_code,
+                                "state" to data.state,
                             )
 
                             userRef.collection("mytasks")

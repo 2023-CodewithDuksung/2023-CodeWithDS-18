@@ -64,7 +64,9 @@ class SearchFragment : Fragment() {
                 Toast.makeText(activity, "input keyword", Toast.LENGTH_SHORT).show()
             } else {
 //                Toast.makeText(activity, searchKeyword, Toast.LENGTH_SHORT).show()
-                getSearchLectures()
+                getSearchLectures("name")
+                getSearchLectures("professor")
+                getSearchLectures("major")
             }
 //            removeData()
         }
@@ -83,9 +85,9 @@ class SearchFragment : Fragment() {
 //        searchLecturesAdater.notifyDataSetChanged()
 //    }
 
-    private fun getSearchLectures() {
+    private fun getSearchLectures(searchField: String) {
         MyApplication.db.collection("lectures")
-            .whereEqualTo("name", searchKeyword)
+            .whereEqualTo(searchField, searchKeyword)
             .get()
             .addOnSuccessListener { result ->
                 val itemList = mutableListOf<ItemLectureModel>()
@@ -93,8 +95,7 @@ class SearchFragment : Fragment() {
                     val item = document.toObject(ItemLectureModel::class.java)
                     item.docId = document.id
                     itemList.add(item)
-                    Toast.makeText(requireContext(), "${itemList}", Toast.LENGTH_SHORT).show()
-                    if (result.size().equals(0)) {
+                    if (result.isEmpty()) {
                         binding.textView.visibility = View.VISIBLE
                         binding.btnAddlecture.visibility = View.VISIBLE
                         searchLectures.visibility = View.GONE // 검색 결과가 없을 때 리사이클러뷰 가시성 제거

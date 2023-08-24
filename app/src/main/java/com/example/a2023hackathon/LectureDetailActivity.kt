@@ -13,7 +13,6 @@ class LectureDetailActivity : AppCompatActivity() {
 
     private lateinit var fragment1: DetailTaskFragment
     private lateinit var fragment2: DetailCommunityFragment
-    private lateinit var name: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +47,7 @@ class LectureDetailActivity : AppCompatActivity() {
         bundle.putString("sub_code", subCode)
 
         fragment1.arguments = bundle
+        fragment2.arguments = bundle
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment1).commit()
 
         val tabs: TabLayout = binding.tabs

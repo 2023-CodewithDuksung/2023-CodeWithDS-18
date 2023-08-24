@@ -57,7 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="컴퓨터공학과"
+                        android:text="컴퓨터공학전공"
                         android:textSize="15dp" />
                 </LinearLayout>
 
@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="2023년도 1학기"
+                        android:text="2023년 1학기"
                         android:textSize="15dp" />
                 </LinearLayout>
 

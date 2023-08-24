@@ -128,28 +128,28 @@ class MyLectureFragment : Fragment() {
         term202301Button.setOnClickListener {
             Toast.makeText(requireContext(), "2023년 1학기 선택", Toast.LENGTH_SHORT).show()
             binding.semester.setText("2023년 1학기")
-            getLectures("2023-01")
+            getLectures("2023년 1학기")
             bottomSheetDialog.dismiss()
         }
 
         term202302Button.setOnClickListener {
             Toast.makeText(requireContext(), "2023년 2학기 선택", Toast.LENGTH_SHORT).show()
             binding.semester.setText("2023년 2학기")
-            getLectures("2023-02")
+            getLectures("2023년 2학기")
             bottomSheetDialog.dismiss()
         }
 
         term202401Button.setOnClickListener {
             Toast.makeText(requireContext(), "2024년 1학기 선택", Toast.LENGTH_SHORT).show()
             binding.semester.setText("2024년 1학기")
-            getLectures("2024-01")
+            getLectures("2024년 1학기")
             bottomSheetDialog.dismiss()
         }
 
         term202402Button.setOnClickListener {
             Toast.makeText(requireContext(), "2024년 2학기 선택", Toast.LENGTH_SHORT).show()
             binding.semester.setText("2024년 2학기")
-            getLectures("2024-02")
+            getLectures("2024년 2학기")
             bottomSheetDialog.dismiss()
         }
 
@@ -205,7 +205,7 @@ class MyLectureFragment : Fragment() {
 
     private fun getLectures(semester: String) {
         db.collection("users").document(auth.uid.toString()).collection("mylectures")
-            .whereEqualTo("term",semester)
+            .whereEqualTo("term","${semester}")
             .get()
             .addOnSuccessListener { result ->
                 val itemList = mutableListOf<ItemLectureModel>()

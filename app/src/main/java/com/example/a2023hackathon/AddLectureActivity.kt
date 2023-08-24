@@ -74,7 +74,7 @@ class AddLectureActivity : AppCompatActivity() {
     }
 
     private fun showTermSelectionDialog() {
-        val options = arrayOf("2023년도 1학기", "2023년도 2학기", "2024년도 1학기", "2024년도 2학기")
+        val options = arrayOf("2023년 1학기", "2023년 2학기", "2024년 1학기", "2024년 2학기")
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("학기 선택")

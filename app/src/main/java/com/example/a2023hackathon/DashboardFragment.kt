@@ -63,9 +63,17 @@ class DashboardFragment : Fragment() {
                         val item = document.toObject(ItemTaskModel::class.java)
                         item.docId = document.id
                         itemList.add(item)
+
+                        if(item.state.toString() !== "1"){
+                            binding.doneRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                            binding.doneRecyclerView.adapter = TodoTaskAdapter(requireContext(),itemList)
+                        }
+                        else{
+                            binding.todoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                            binding.todoRecyclerView.adapter = TodoTaskAdapter(requireContext(),itemList)
+                        }
                     }
-                    binding.todoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    binding.todoRecyclerView.adapter = TodoTaskAdapter(requireContext(),itemList)
+
                 }
                 .addOnFailureListener{
                     Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()

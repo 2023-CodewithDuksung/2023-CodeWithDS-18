@@ -28,6 +28,7 @@ class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
     private var selectedDate: String = "0"
+    private lateinit var presentSemester: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -100,36 +101,10 @@ class HomeFragment : Fragment() {
                     recyclerView.adapter = MyTaskAdapter(requireContext(), itemList) // 사용자 선택한 날짜에 맞는 아이템 리스트로 설정
 
                     if(result.size() == 0) guide.visibility = View.VISIBLE
-//                    else {
-//                        // Add a dot under the selected date in calendarView
-//                        val selectedDateCalendar = Calendar.getInstance()
-//                        selectedDateCalendar.time = SimpleDateFormat("yyyy-MM-dd").parse(selectedDate)
-//                        binding.calendarView.addDecorator(
-//                            EventDecorator(
-//                                ContextCompat.getColor(
-//                                    requireContext(),
-//                                    R.color.red
-//                                ), selectedDateCalendar
-//                            )
-//                        )
-//                    }
 
                     bottomSheetDialog.setContentView(view)
                     bottomSheetDialog.show()
 
-//                    binding.mytaskRecyclerView.layoutManager = LinearLayoutManager(
-//                        context,
-//                        LinearLayoutManager.HORIZONTAL,
-//                        false
-//                    )
-//
-//                    val layoutParams = binding.mytaskRecyclerView.layoutParams
-//                    layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
-//                    binding.mytaskRecyclerView.layoutParams = layoutParams
-//
-//                    binding.mytaskRecyclerView.adapter = MyTaskAdapter(requireContext(), itemList)
-//                    Log.d("ToyProject", "${itemList}")
-//                    Toast.makeText(context, "선택한 날짜: $selectedDate", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener{
                     Toast.makeText(context, "선택한 날짜: $selectedDate", Toast.LENGTH_SHORT).show()
@@ -141,8 +116,12 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        MyApplication.db.collection("lectures")
-            .orderBy("term", Query.Direction.DESCENDING)
+        presentSemester = "2023년 2학기"
+
+        binding.psemester.text = "${presentSemester} 강좌 전체보기"
+
+        MyApplication.db.collection("users").document(auth.uid.toString()).collection("mylectures")
+            .whereEqualTo("term", "${presentSemester}")
             .get()
             .addOnSuccessListener { result ->
                 val itemList = mutableListOf<ItemLectureModel>()
@@ -153,11 +132,29 @@ class HomeFragment : Fragment() {
                 }
                 binding.feedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
                 binding.feedRecyclerView.adapter = MyLectureAdapter(requireContext(), itemList)
-//                Toast.makeText(context, "내강의리스트 가져오기 성공", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "내강의리스트 가져오기 성공", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{
                 Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()
             }
+
+//        MyApplication.db.collection("lectures")
+//            .orderBy("term", Query.Direction.DESCENDING)
+//            .get()
+//            .addOnSuccessListener { result ->
+//                val itemList = mutableListOf<ItemLectureModel>()
+//                for(document in result){
+//                    val item = document.toObject(ItemLectureModel::class.java)
+//                    item.docId = document.id
+//                    itemList.add(item)
+//                }
+//                binding.feedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+//                binding.feedRecyclerView.adapter = MyLectureAdapter(requireContext(), itemList)
+////                Toast.makeText(context, "내강의리스트 가져오기 성공", Toast.LENGTH_SHORT).show()
+//            }
+//            .addOnFailureListener{
+//                Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()
+//            }
     }
 
 }
