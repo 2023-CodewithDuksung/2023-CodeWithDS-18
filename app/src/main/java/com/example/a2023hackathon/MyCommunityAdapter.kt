@@ -45,7 +45,7 @@ class MyCommunityAdapter(private val itemList: MutableList<ItemCommunityModel>, 
         if (holder is MyCommunityViewHolder) {
             holder.binding.run {
                 communityMessage.text = data.text
-                messageTime.text = data.time
+                messageTime.text = formatTime("${data.time}")
                 communityMessage.gravity = Gravity.RIGHT
             }
         } else if (holder is OtherCommunityViewHolder) {
@@ -62,6 +62,19 @@ class MyCommunityAdapter(private val itemList: MutableList<ItemCommunityModel>, 
                 messageTime.text = data.time
             }
         }
+    }
+
+    private fun formatTime(dateTime: String): String {
+        val dateTimeParts = dateTime.split(" ")
+        if (dateTimeParts.size >= 2) {
+            val timeParts = dateTimeParts[1].split(":")
+            if (timeParts.size >= 2) {
+                val hour = timeParts[0]
+                val minute = timeParts[1]
+                return "$hour:$minute"
+            }
+        }
+        return ""
     }
 
     fun setData(list: List<ItemCommunityModel>) {

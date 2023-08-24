@@ -23,7 +23,7 @@ class SearchFragment : Fragment() {
     var searchKeyword = ""
 
     private lateinit var searchLectures: RecyclerView
-//    private lateinit var searchLecturesAdater: MyLectureAdapter
+    //    private lateinit var searchLecturesAdater: MyLectureAdapter
     private lateinit var searchLecturesLayoutMgr: LinearLayoutManager
     private var searchLecturesPage = 1
 

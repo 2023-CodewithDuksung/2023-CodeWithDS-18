@@ -51,6 +51,7 @@ class MyTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMode
                         if (querySnapshot.isEmpty) {
                             // 해당 강의가 아직 담겨있지 않을 때만 담기 기능 실행
                             val enrollmentData = mapOf(
+                                "taskId" to data.docId,
                                 "title" to data.title,
                                 "content" to data.content,
                                 "s_date" to data.s_date,

@@ -52,12 +52,17 @@ class HomeFragment : Fragment() {
         }
 
         binding.menuSearch.setOnClickListener {
-            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-            val mylecturefragment: Fragment = SearchFragment()
-            transaction.replace(R.id.main_layout, mylecturefragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
         }
+
+//        binding.menuSearch.setOnClickListener {
+//            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+//            val mylecturefragment: Fragment = SearchFragment()
+//            transaction.replace(R.id.main_layout, mylecturefragment)
+//            transaction.addToBackStack(null)
+//            transaction.commit()
+//        }
 
         if(MyApplication.checkAuth()){
             binding.greeting.text = "${MyApplication.email}님 환영합니다!"

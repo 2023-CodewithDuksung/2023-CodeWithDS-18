@@ -25,30 +25,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar_back"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/add_professor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="교수명" />
+            android:text="교수명"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/add_major"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="학과명" />
+            android:text="학과명"
+            android:visibility="gone" />
+
         <EditText
             android:id="@+id/add_tasktitle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="과제명"/>
+            android:hint="과제명" />
+
         <EditText
             android:id="@+id/add_taskcontent"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="과제 내용"/>
+            android:hint="과제 내용" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -60,21 +67,21 @@
                 android:id="@+id/string_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="마감 일자"
                 android:layout_centerVertical="true"
+                android:text="마감 일자"
                 android:textSize="18dp" />
 
             <Button
                 android:id="@+id/add_ddate"
-                android:layout_alignParentRight="true"
-                android:text="날짜 선택하기"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:backgroundTint="@color/black" />
+                android:backgroundTint="#2A6EE0"
+                android:text="날짜 선택하기" />
 
         </RelativeLayout>
 
@@ -93,27 +100,28 @@
 
             <Button
                 android:id="@+id/add_dtime"
-                android:text="시간 선택하기"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginRight="5dp"
                 android:layout_alignParentRight="true"
-                android:backgroundTint="@color/black" />
+                android:layout_marginRight="5dp"
+                android:backgroundTint="#2A6EE0"
+                android:text="시간 선택하기" />
 
 
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/subCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:id="@+id/subCode"/>
+            android:visibility="gone" />
+
         <TextView
+            android:id="@+id/state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:text="In progress"
-            android:id="@+id/state"/>
+            android:visibility="gone" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
