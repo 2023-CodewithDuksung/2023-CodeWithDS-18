@@ -46,7 +46,8 @@
                 android:background="@android:color/transparent"
                 android:hint="메세지를 입력하세요."
                 android:textSize="16dp"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
                 android:imeOptions="actionSend" />
 
             <Button

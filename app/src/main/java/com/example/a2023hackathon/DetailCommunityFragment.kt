@@ -4,10 +4,13 @@ import android.content.ContentValues.TAG
 import android.graphics.Rect
 import android.view.ViewGroup.LayoutParams
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2023hackathon.databinding.FragmentDetailCommunityBinding
@@ -39,10 +42,17 @@ class DetailCommunityFragment : Fragment() {
 
         // 메세지 전송 버튼 클릭 시
         binding.editBtn.setOnClickListener {
-            saveStore() //전송
-            binding.editTxt.setText("") // 텍스트창 초기화
-            // 어댑터 재실행
-            getStore()
+            val message = binding.editTxt.text.toString().trim()
+
+            if (message.isEmpty()) { // 빈 텍스트일 경우에는 전송 막기
+                Toast.makeText(requireContext(), "메세지를 입력하세요.", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            } else {
+                saveStore() //전송
+                binding.editTxt.setText("") // 텍스트창 초기화
+                // 어댑터 재실행
+                getStore()
+            }
         }
 
         // 메세지 입력 후 엔터 클릭 시에도 전송
@@ -62,6 +72,22 @@ class DetailCommunityFragment : Fragment() {
         binding.communityRecyclerview.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
             binding.communityRecyclerview.scrollToPosition(adapter.itemCount - 1)
         }
+
+        binding.editTxt.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 이전 텍스트 변경 전에 호출되는 부분
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경될 때 호출되는 부분
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후 호출되는 부분
+                // 스크롤을 맨 아래로 이동시킵니다.
+                binding.editTxt.setSelection(s?.length ?: 0)
+            }
+        })
 
         MyApplication.db.collection("communities")
             .orderBy("time", Query.Direction.ASCENDING)
