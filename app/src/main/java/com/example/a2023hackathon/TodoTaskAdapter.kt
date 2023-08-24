@@ -3,7 +3,9 @@ package com.example.a2023hackathon
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Paint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.a2023hackathon.MyApplication.Companion.auth
 import com.example.a2023hackathon.databinding.ItemTaskBinding
 import com.example.a2023hackathon.databinding.ItemTodoTaskBinding
 import java.text.SimpleDateFormat
@@ -19,9 +22,7 @@ import java.util.Locale
 
 class TodoTaskViewHolder(val binding: ItemTodoTaskBinding): RecyclerView.ViewHolder(binding.root)
 
-
 class TodoTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskModel>): RecyclerView.Adapter<TodoTaskViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoTaskViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -33,7 +34,7 @@ class TodoTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMo
 
         holder.binding.run {
             todoTaskTitle.text = data.title
-            todoMajorTitle.text = data.major
+            todoMajorTitle.text = data.name
 
             val dDay = calculateDateDifference(data.d_date, toDayStr)
             val dDayText = if (dDay > 0) {
@@ -54,10 +55,52 @@ class TodoTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMo
                 // D-day 표시에 대한 색상 설정 (예: 검은색)
                 todoTaskDDay.setTextColor(Color.BLACK)
             }
+//
 
-            todoTaskTitle.setOnClickListener{
-                //DetailTaskFragment로 이동시키기
+            val docId = data.docId
 
+            todoTaskCheckbox.setOnClickListener {
+//                val position = holder.adapterPosition
+                Log.d("2023Hackathon", "docId: ${data.docId}") // 확인용 로그 추가
+                Log.d("2023Hackathon", "docId: ${docId}") // 확인용 로그 추가
+
+                if (data.docId != null) {
+                    if (docId != null) {
+                        data.state = if (todoTaskCheckbox.isChecked) "0" else "1"
+
+                        MyApplication.db.collection("users")
+                            .document(auth.uid.toString())
+                            .collection("mytasks")
+                            .document(docId.toString())
+                            .update("state", data.state)
+                            .addOnSuccessListener {
+                                Log.d("2023Hackathon", "Firestore 데이터 업데이트 성공")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w("2023Hackathon", "Firestore 데이터 업데이트 실패", e)
+                            }
+                    } else {
+                        Log.d("2023Hackathon", "docId is null") // 확인용 로그 추가
+                    }
+
+                    //
+                    todoTaskCheckbox.setOnCheckedChangeListener { _, isChecked ->
+                        // isChecked 값에 따라 data.isChecked 업데이트
+                        data.isChecked = isChecked
+
+                        // isChecked 값에 따라 텍스트 스트라이크 스루 적용 또는 제거
+                        if (isChecked) {
+                            todoTaskTitle.paintFlags =
+                                todoTaskTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                            Log.d("2023Hackerthon","취소선 적용")
+
+                        } else {
+                            todoTaskTitle.paintFlags =
+                                todoTaskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                        }
+
+                    }
+                }
             }
         }
     }
@@ -95,13 +138,10 @@ class TodoTaskAdapter(val context: Context, val itemList: MutableList<ItemTaskMo
         // 오류 발생 시 기본값으로 -1 반환
         return -1
     }
-//    inner class ViewHolder(private val binding: ItemTodoTaskBinding) : RecyclerView.ViewHolder(binding.root) {
-//        fun bind(item: ItemTaskModel) {
-//            binding.apply {
-//                todo_task_title.text = item.type
-//                TodoTaskTitle.text = item.title
-//                // 다른 필요한 바인딩 작업 수행
-//            }
-//        }
-//    }
+
+    fun updateData(newItemList: List<ItemTaskModel>) {
+        itemList.clear()
+        itemList.addAll(newItemList)
+        notifyDataSetChanged() // 데이터 변경을 RecyclerView에 알립니다.
+    }
 }

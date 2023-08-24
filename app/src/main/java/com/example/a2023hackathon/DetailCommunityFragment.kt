@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2023hackathon.databinding.FragmentDetailCommunityBinding
@@ -39,10 +40,17 @@ class DetailCommunityFragment : Fragment() {
 
         // 메세지 전송 버튼 클릭 시
         binding.editBtn.setOnClickListener {
-            saveStore() //전송
-            binding.editTxt.setText("") // 텍스트창 초기화
-            // 어댑터 재실행
-            getStore()
+            val message = binding.editTxt.text.toString().trim() // 전송을 할 때 텍스트를 받아오기-선언 위치 중요
+            if(message.isEmpty()){
+                Toast.makeText(requireContext(), "메시지를 입력하세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            else{
+                saveStore() //전송
+                binding.editTxt.setText("") // 텍스트창 초기화
+                // 어댑터 재실행
+                getStore()
+            }
         }
 
         // 메세지 입력 후 엔터 클릭 시에도 전송

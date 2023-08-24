@@ -1,29 +1,3 @@
-//package com.example.a2023hackathon
-//
-//import android.os.Bundle
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import android.widget.TextView
-//import androidx.fragment.app.Fragment
-//import androidx.lifecycle.ViewModelProvider
-//import com.example.a2023hackathon.databinding.FragmentDashboardBinding
-//import com.example.a2023hackathon.databinding.FragmentNotificationsBinding
-//
-//class DashboardFragment : Fragment() {
-//
-//    lateinit var binding: FragmentDashboardBinding
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        binding = FragmentDashboardBinding.inflate(inflater, container, false)
-//
-//        return binding.root
-//    }
-//}
-
 package com.example.a2023hackathon
 
 import android.os.Bundle
@@ -63,17 +37,9 @@ class DashboardFragment : Fragment() {
                         val item = document.toObject(ItemTaskModel::class.java)
                         item.docId = document.id
                         itemList.add(item)
-
-                        if(item.state.toString() !== "1"){
-                            binding.doneRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                            binding.doneRecyclerView.adapter = TodoTaskAdapter(requireContext(),itemList)
-                        }
-                        else{
-                            binding.todoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                            binding.todoRecyclerView.adapter = TodoTaskAdapter(requireContext(),itemList)
-                        }
                     }
-
+                    binding.todoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    binding.todoRecyclerView.adapter = TodoTaskAdapter(requireContext(),itemList)
                 }
                 .addOnFailureListener{
                     Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()

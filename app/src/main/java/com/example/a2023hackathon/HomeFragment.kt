@@ -1,8 +1,10 @@
 package com.example.a2023hackathon
 
 import android.content.Intent
+import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.*
 import android.widget.Button
@@ -14,15 +16,17 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a2023hackathon.MyApplication.Companion.auth
 import com.example.a2023hackathon.databinding.FragmentHomeBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.color.utilities.MaterialDynamicColors.onError
 import com.google.firebase.firestore.Query
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashSet
 
 class HomeFragment : Fragment() {
 
@@ -56,14 +60,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-//        binding.menuSearch.setOnClickListener {
-//            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-//            val mylecturefragment: Fragment = SearchFragment()
-//            transaction.replace(R.id.main_layout, mylecturefragment)
-//            transaction.addToBackStack(null)
-//            transaction.commit()
-//        }
-
         if(MyApplication.checkAuth()){
             binding.greeting.text = "${MyApplication.email}님 환영합니다!"
         } else {
@@ -74,6 +70,21 @@ class HomeFragment : Fragment() {
         val adapter = MyLectureAdapter(requireContext(), itemList)
         binding.feedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.feedRecyclerView.adapter = adapter
+
+//        //
+//        var startTimeCalendar = Calendar.getInstance()
+//        var endTimeCalendar = Calendar.getInstance()
+//
+//        val currentYear = startTimeCalendar.get(Calendar.YEAR)
+//        val currentMonth = startTimeCalendar.get(Calendar.MONTH)
+//        val currentDate = startTimeCalendar.get(Calendar.DATE)
+//
+//        endTimeCalendar.set(Calendar.MONTH, currentMonth+3)
+//
+//        binding.materialCalendar.state().edit()
+//            .setFirstDayOfWeek(Calendar.SUNDAY)
+//            .setCalendarDisplayMode(CalendarMode.MONTHS)
+//            .commit()
 
         return binding.root
     }
@@ -142,24 +153,6 @@ class HomeFragment : Fragment() {
             .addOnFailureListener{
                 Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()
             }
-
-//        MyApplication.db.collection("lectures")
-//            .orderBy("term", Query.Direction.DESCENDING)
-//            .get()
-//            .addOnSuccessListener { result ->
-//                val itemList = mutableListOf<ItemLectureModel>()
-//                for(document in result){
-//                    val item = document.toObject(ItemLectureModel::class.java)
-//                    item.docId = document.id
-//                    itemList.add(item)
-//                }
-//                binding.feedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-//                binding.feedRecyclerView.adapter = MyLectureAdapter(requireContext(), itemList)
-////                Toast.makeText(context, "내강의리스트 가져오기 성공", Toast.LENGTH_SHORT).show()
-//            }
-//            .addOnFailureListener{
-//                Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()
-//            }
     }
 
 }

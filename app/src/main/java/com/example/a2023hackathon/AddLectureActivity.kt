@@ -40,11 +40,11 @@ class AddLectureActivity : AppCompatActivity() {
 
     fun saveStore() {
         val data = mapOf(
-            "name" to binding.addLecturename.text.toString(),
+            "name" to removeSpacesFromString(binding.addLecturename.text.toString()),
             "term" to binding.termString.text.toString(),
-            "professor" to binding.addProfessor.text.toString(),
+            "professor" to removeSpacesFromString(binding.addProfessor.text.toString()),
             "major" to binding.majorString.text.toString(),
-            "sub_code" to binding.addSubcode.text.toString(),
+            "sub_code" to removeSpacesFromString(binding.addSubcode.text.toString()),
             "mytasks" to null,
         )
 
@@ -84,6 +84,11 @@ class AddLectureActivity : AppCompatActivity() {
         }
         builder.create().show()
     }
+
+    fun removeSpacesFromString(input: String): String {
+        return input.trim()
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_back, menu)

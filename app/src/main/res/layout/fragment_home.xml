@@ -28,11 +28,34 @@
 
         </com.google.android.material.appbar.MaterialToolbar>
 
+<!--        <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
+<!--            android:id="@+id/materialCalendar"-->
+<!--            app:mcv_selectionColor="#d2d2d2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/chatList_toolbar"/>-->
+
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/chatList_toolbar"/>
+
+<!--        <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
+<!--            android:id="@+id/calendarView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
+
+<!--        <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
+<!--            android:id="@+id/calendarView"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="10dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:mcv_selectionColor="#5a7fbf"-->
+<!--            app:mcv_arrowColor="@color/white"-->
+<!--            tools:ignore="MissingConstraints" />-->
 
         <TextView
             android:id="@+id/greeting"

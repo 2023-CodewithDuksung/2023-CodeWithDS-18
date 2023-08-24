@@ -15,5 +15,6 @@ data class ItemTaskModel(
     var major: String? = null,
     var sub_code: String? = null,
     var state: String? = "1",
+    var isChecked: Boolean = false
 )
 

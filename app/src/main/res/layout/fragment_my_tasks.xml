@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyTasksFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/chatList_toolbar"
+        android:background="?android:attr/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:titleCentered="true">
+
+        <TextView
+            android:id="@+id/semester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="과제 목록"
+            android:layout_gravity="center"
+            android:textSize="15dp"/>
+
+        <ImageView
+            android:id="@+id/deleteAll"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:clickable="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/trashcan"
+            android:layout_gravity="right" />
+
+        <TextView
+            android:id="@+id/btn_bs"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="상태"
+            android:layout_gravity="right" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="아직 추가한 과제가 없습니다."
+        android:visibility="invisible"
+        android:layout_marginTop="30dp"
+        android:gravity="center"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/feedRecyclerView"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/chatList_toolbar"
+        tools:listitem="@layout/item_lecture"
+        tools:itemCount="3"/>
+
+</RelativeLayout>

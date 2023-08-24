@@ -5,12 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.ViewModelProvider
 import com.example.a2023hackathon.databinding.FragmentNotificationsBinding
-import com.google.firebase.firestore.Query
 
 class NotificationsFragment : Fragment() {
 
@@ -39,6 +36,22 @@ class NotificationsFragment : Fragment() {
 
         binding.logoutButton.setOnClickListener {
             logout()
+        }
+
+        binding.completeTask.setOnClickListener{
+            var bundle : Bundle = Bundle()
+            bundle.putString("fromFrag", "수강과목프래그먼트")
+            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            val mytasksfragment: Fragment = MyTasksFragment()
+            mytasksfragment.arguments = bundle
+            transaction.replace(R.id.main_layout, mytasksfragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        binding.makers.setOnClickListener {
+            val intent = Intent(requireContext(), IntroActivity::class.java)
+            startActivity(intent)
         }
 
         return binding.root

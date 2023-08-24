@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/bottom_sheet_menu"
+    android:padding="25dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textView"
+        android:layout_marginBottom="10dp"
+        android:text="상태를 선택하세요."/>
+
+    <Button
+        android:id="@+id/termAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="전체 보기"
+        android:backgroundTint="#2A6EE0"
+        android:textColor="@android:color/white"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/progress"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:text="진행중"
+            android:backgroundTint="#2A6EE0"
+            android:textColor="@android:color/white"/>
+        <Button
+            android:id="@+id/done"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="완료"
+            android:backgroundTint="#2A6EE0"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
