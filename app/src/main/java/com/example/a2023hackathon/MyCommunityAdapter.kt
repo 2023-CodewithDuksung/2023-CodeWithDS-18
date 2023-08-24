@@ -5,6 +5,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a2023hackathon.databinding.ItemCommunityMeBinding
 import com.example.a2023hackathon.databinding.ItemCommunityOtherBinding
@@ -40,11 +41,16 @@ class MyCommunityAdapter(private val itemList: MutableList<ItemCommunityModel>, 
         val data = itemList.get(position)
 
         if (holder is MyCommunityViewHolder) {
+            holder.binding.communityMe.gravity  = Gravity.RIGHT
             holder.binding.run {
                 communityMessage.text = data.text
                 messageTime.text = data.time
-
+                communityMessage.textAlignment = View.TEXT_ALIGNMENT_VIEW_END
+                messageTime.textAlignment = View.TEXT_ALIGNMENT_VIEW_END
+                communityMessage.gravity  = Gravity.RIGHT
+                messageTime.gravity = Gravity.RIGHT
             }
+
         } else if (holder is OtherCommunityViewHolder) {
             holder.binding.run {
                 communityUser.text = data.user
