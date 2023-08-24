@@ -23,24 +23,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/progress"
-            android:layout_width="176dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="진행중"
             android:backgroundTint="#2A6EE0"
             android:textColor="@android:color/white"/>
+
         <Button
             android:id="@+id/done"
-            android:layout_width="176dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
             android:text="완료"
             android:backgroundTint="#2A6EE0"
             android:textColor="@android:color/white"/>
-
     </LinearLayout>
 
 
